@@ -8,11 +8,97 @@
   <artifactId>cdcampusrecruit</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>applicantcloud</module>
+  </modules>
 
   <properties>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <spring-cloud-alibaba>2.2.6.RELEASE</spring-cloud-alibaba>
+    <spring-cloud>Hoxton.SR9</spring-cloud>
+    <spring-boot>2.3.2.RELEASE</spring-boot>
+    <mybatisplus>3.4.0</mybatisplus>
+    <lombok>1.18.20</lombok>
+    <mysql-connector-java>8.0.20</mysql-connector-java>
+    <alibaba.nacos.version>2.0.3</alibaba.nacos.version>
+    <spring-boot.mybatis>2.3.2</spring-boot.mybatis>
+    <pagehelper.boot.version>1.4.0</pagehelper.boot.version>
+    <commons.io.version>2.11.0</commons.io.version>
   </properties>
+  <dependencyManagement>
+    <dependencies>
+      <!-- SpringCloud Alibaba 微服务 -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- SpringBoot 依赖配置 -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
 
+      <!-- SpringCloud 微服务 -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatisplus}</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector-java}</version>
+      </dependency>
+
+      <!-- Alibaba Nacos 配置 -->
+      <dependency>
+        <groupId>com.alibaba.nacos</groupId>
+        <artifactId>nacos-client</artifactId>
+        <version>${alibaba.nacos.version}</version>
+      </dependency>
+      <!-- Mybatis 依赖配置 -->
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${spring-boot.mybatis}</version>
+      </dependency>
+      <!-- pagehelper 分页插件 -->
+      <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper-spring-boot-starter</artifactId>
+        <version>${pagehelper.boot.version}</version>
+      </dependency>
+
+      <!-- io常用工具类 -->
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons.io.version}</version>
+      </dependency>
+
+    </dependencies>
+
+
+
+  </dependencyManagement>
 
 </project>
