@@ -1,9 +1,9 @@
 package com.ycode.cdcr.base.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDate;
 import lombok.Builder;
@@ -25,12 +25,12 @@ public class WorkInfo implements Serializable {
 
   @TableId(type = IdType.AUTO)
   private Integer id;
-  private Long uid;
+  private String uid;
   private String entName;
   private String entIndustry;
-  @JSONField(format = "yyyy-MM-dd")
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private LocalDate startTime;
-  @JSONField(format = "yyyy-MM-dd")
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private LocalDate endTime;
   private String occupation;
   private String department;

@@ -3,11 +3,14 @@ package com.ycode.cdcr.base.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDate;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * @author YangLin
@@ -18,22 +21,25 @@ import lombok.EqualsAndHashCode;
 @TableName("ap_user")
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class APUser implements Serializable {
 
   private static final long serialVersionUID = -1867031398166050867L;
   @TableId(type = IdType.AUTO)
   private Integer id;
-  private Long uid;
+  private String uid;
   private String apName;
   private String password;
   private String account;
-  private Integer age;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private LocalDate birthday;
   private Integer sex;
   private String city;
   private String iphone;
   private String mail;
   private String apImg;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private LocalDate createTime;
 }

@@ -3,8 +3,9 @@ package com.ycode.cdcr.base.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,15 +24,19 @@ public class RecruitmentPosition implements Serializable {
   private static final long serialVersionUID = 8093522889340138727L;
   @TableId(type = IdType.AUTO)
   private Integer rpid;
-  private Long hrid;
-  private Long eid;
+  private String hrid;
+  private String eid;
   private String rpName;
+  private String entName;
+  private String employeesNum;
+  private String education;
   private String salary;
   private String workAddress;
   private String experience;
   private String positionLabel;
   private String jobResponsibilities;
   private String additionalInformation;
-  private LocalDate createTime;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime createTime;
 
 }

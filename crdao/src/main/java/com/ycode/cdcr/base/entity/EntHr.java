@@ -23,8 +23,8 @@ public class EntHr implements Serializable {
   private static final long serialVersionUID = -143482793007401833L;
   @TableId(type = IdType.AUTO)
   private Integer id;
-  private Long hrid;
-  private Long eid;
+  private String hrid;
+  private String eid;
   private String entName;
   private String account;
   private String password;

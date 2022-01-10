@@ -4,6 +4,9 @@ spring:
     url: jdbc:mysql://localhost:3306/cdcr?characterEncoding=UTF-8&useSSL=false&useUnicode=true
     username: root
     password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
 management:
   endpoints:
     web:
@@ -18,3 +21,7 @@ mybatis-plus:
     db-config:
       logic-delete-value: "N"
       logic-not-delete-value: "Y"
+token:
+  jwtSecret: (XIAO:)_$^11244^%$_(WEI:)_@@++--(LAO:)_++++_.sds_(SHI:)
+  expire:
+    seconds: 7200

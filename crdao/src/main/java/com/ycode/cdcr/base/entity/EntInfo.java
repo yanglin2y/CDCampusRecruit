@@ -23,7 +23,7 @@ public class EntInfo implements Serializable {
 
   @TableId(type = IdType.AUTO)
   private Integer id;
-  private Long eid;
+  private String eid;
   private String account;
   private String password;
   private String entName;
