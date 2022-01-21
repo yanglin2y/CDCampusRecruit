@@ -3,8 +3,9 @@ package com.ycode.cdcr.base.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -34,7 +35,8 @@ public class EntHr implements Serializable {
   private String position;
   private String department;
   private String hrImg;
-  private LocalDate lastLogin;
-  private LocalDate createTime;
-
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime lastLogin;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime createTime;
 }

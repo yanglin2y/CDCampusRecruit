@@ -11,6 +11,7 @@ import com.ycode.cdcr.common.util.AESSimpleUtil;
 import com.ycode.cdcr.common.util.SnowflakeIdWorker;
 import com.ycode.cdcr.common.web.entity.vo.Result;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class APUserServiceImpl extends ServiceImpl<APUserMapper, APUser> impleme
       return Result.fail("登陆账户已经存在");
     }
     APUser apUser = APUser.builder().apName(apName).account(account).password(AESSimpleUtil.encrypt(password)).
-        iphone(iphone).mail(mail).createTime(LocalDate.now()).uid(
+        iphone(iphone).mail(mail).createTime(LocalDateTime.now()).uid(
             SnowflakeIdWorker.getId().toString())
         .build();
     boolean save = apUserService.save(apUser);

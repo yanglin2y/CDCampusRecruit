@@ -11,6 +11,7 @@ import com.ycode.cdcr.base.entity.ProjectInfo;
 import com.ycode.cdcr.base.entity.WorkInfo;
 import com.ycode.cdcr.common.web.entity.vo.Result;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class MyInfoServiceImpl implements MyInfoService {
           DateTimeFormatter.ofPattern("yyyy-MM-dd"));
       LocalDate newEndTime = LocalDate.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
       EducationInfo educationInfo = EducationInfo.builder().education(education).school(school)
-          .major(major).startTime(newStartTime).endTime(newEndTime).createTime(LocalDate.now())
+          .major(major).startTime(newStartTime).endTime(newEndTime).createTime(LocalDateTime.now())
           .uid(uid).build();
       boolean res = educationInfoService.save(educationInfo);
       return res == true ? Result.success("保存成功") : Result.fail("保存失败");
@@ -77,7 +78,7 @@ public class MyInfoServiceImpl implements MyInfoService {
     LocalDate newStartTime = LocalDate.parse(startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     LocalDate newEndTime = LocalDate.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     EducationInfo educationInfo = EducationInfo.builder().education(education).school(school)
-        .major(major).startTime(newStartTime).endTime(newEndTime).createTime(LocalDate.now())
+        .major(major).startTime(newStartTime).endTime(newEndTime).createTime(LocalDateTime.now())
         .uid(uid).id(id).build();
     boolean res = educationInfoService.update(educationInfo,
         new QueryWrapper<EducationInfo>().eq("id", id));
@@ -110,7 +111,7 @@ public class MyInfoServiceImpl implements MyInfoService {
       LocalDate newEndTime = LocalDate.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
       WorkInfo workInfo = WorkInfo.builder().entName(entName).entIndustry(entIndustry)
           .occupation(occupation).department(department).content(content).startTime(newStartTime)
-          .endTime(newEndTime).createTime(LocalDate.now()).uid(uid).build();
+          .endTime(newEndTime).createTime(LocalDateTime.now()).uid(uid).build();
       boolean res = workInfoService.save(workInfo);
       return res == true ? Result.success("保存成功") : Result.fail("保存失败");
     } else {
@@ -127,7 +128,7 @@ public class MyInfoServiceImpl implements MyInfoService {
     LocalDate newEndTime = LocalDate.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     WorkInfo workInfo = WorkInfo.builder().entName(entName).entIndustry(entIndustry)
         .occupation(occupation).department(department).content(content).startTime(newStartTime)
-        .endTime(newEndTime).createTime(LocalDate.now()).build();
+        .endTime(newEndTime).createTime(LocalDateTime.now()).build();
     boolean res = workInfoService.update(workInfo,
         new QueryWrapper<WorkInfo>().eq("uid", uid).eq("id", id));
 
@@ -150,7 +151,7 @@ public class MyInfoServiceImpl implements MyInfoService {
     LocalDate newStartTime = LocalDate.parse(startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     LocalDate newEndTime = LocalDate.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     ProjectInfo projectInfo = ProjectInfo.builder().projectName(projectName).content(content)
-        .startTime(newStartTime).endTime(newEndTime).createTime(LocalDate.now()).build();
+        .startTime(newStartTime).endTime(newEndTime).createTime(LocalDateTime.now()).build();
     boolean res = projectInfoService.update(projectInfo,
         new QueryWrapper<ProjectInfo>().eq("uid", uid).eq("id", id));
 
@@ -169,7 +170,7 @@ public class MyInfoServiceImpl implements MyInfoService {
           DateTimeFormatter.ofPattern("yyyy-MM-dd"));
       LocalDate newEndTime = LocalDate.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
       ProjectInfo projectInfo = ProjectInfo.builder().projectName(projectName)
-          .startTime(newStartTime).endTime(newEndTime).createTime(LocalDate.now()).uid(uid)
+          .startTime(newStartTime).endTime(newEndTime).createTime(LocalDateTime.now()).uid(uid)
           .content(content).build();
       boolean res = projectInfoService.save(projectInfo);
       return res == true ? Result.success("保存成功") : Result.fail("保存失败");
