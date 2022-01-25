@@ -19,4 +19,6 @@ public interface RecruitmentPositionService extends IService<RecruitmentPosition
 
   Result selectPostionByEnt(String eid);
 
+  Result selctPostionByCondition(String math,Page<RecruitmentPosition> page);
+
 }

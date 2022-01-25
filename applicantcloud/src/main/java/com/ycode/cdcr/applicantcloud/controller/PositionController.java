@@ -38,4 +38,9 @@ public class PositionController {
     return recruitmentPositionService.selectPostionByEnt(eid);
   }
 
+  @GetMapping("selctPostionByCondition")
+  public Result selctPostionByCondition(String math,Page<RecruitmentPosition> page){
+    return recruitmentPositionService.selctPostionByCondition(math,page);
+  }
+
 }
