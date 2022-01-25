@@ -18,6 +18,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 /**
  * @author YangLin
@@ -38,6 +39,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
   TokenFilter tokenFilter;
   @Autowired
   AuthenticationSuccessHandler authenticationSuccessHandler;
+  @Autowired
+  LogoutSuccessHandler logoutSuccessHandler;
 
   @Bean
   @Override
@@ -70,7 +73,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     http.csrf().disable();
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     http.authorizeRequests()
-        .antMatchers("/login/**","/user/registerAPUser").permitAll()
+        .antMatchers("/home","/user/registerAPUser","/user/login").permitAll()
         .anyRequest().authenticated();
     http.formLogin()
         .loginPage("/login.html")
@@ -79,7 +82,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         .passwordParameter("password")
         .failureHandler(loginFailureHandler)
         .successHandler(authenticationSuccessHandler)
-        .and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);;
+        .and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
+    http.logout().logoutUrl("/user/logout").logoutSuccessHandler(logoutSuccessHandler);
     http.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
   }
 

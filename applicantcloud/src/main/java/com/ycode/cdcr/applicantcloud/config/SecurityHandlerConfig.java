@@ -2,6 +2,7 @@ package com.ycode.cdcr.applicantcloud.config;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ycode.cdcr.applicantcloud.entity.po.Token;
+import com.ycode.cdcr.applicantcloud.filter.TokenFilter;
 import com.ycode.cdcr.applicantcloud.service.APUserService;
 import com.ycode.cdcr.applicantcloud.service.TokenService;
 import com.ycode.cdcr.base.entity.APUser;
@@ -20,6 +21,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.util.StringUtils;
 
 /**
@@ -62,6 +64,17 @@ public class SecurityHandlerConfig {
       data.put("loginMsg", msg);
       ResponseUtil.responseJson(response, HttpStatus.OK.value(), Result.fail(msg));
     };
+  }
+  @Bean
+  public LogoutSuccessHandler logoutSuccessHandler(){
+    return ((request, response, authentication) -> {
+      String token = TokenFilter.getToken(request);
+      Map map = new HashMap();
+      map.put("code",Result.SUCCESS_CODE);
+      map.put("mesg","退出成功");
+      tokenService.deleteToken(token);
+      ResponseUtil.responseJson(response,HttpStatus.OK.value(),map);
+    });
   }
   @Bean
   public AuthenticationSuccessHandler loginSuccessHandler() {
