@@ -11,7 +11,12 @@ import com.ycode.cdcr.common.web.entity.vo.Result;
  */
 public interface RecruitmentPositionService extends IService<RecruitmentPosition> {
 
-  public Result selectAllPosition();
-  public Result selectAllPositionByPage(Page<RecruitmentPosition> page);
+  Result selectAllPosition();
+
+  Result selectAllPositionByPage(Page<RecruitmentPosition> page);
+
+  Result selectPostionById(Integer id);
+
+  Result selectPostionByEnt(String eid);
 
 }

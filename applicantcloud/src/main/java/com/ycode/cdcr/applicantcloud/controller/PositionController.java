@@ -29,5 +29,13 @@ public class PositionController {
 
     return recruitmentPositionService.selectAllPositionByPage(page);
   }
+  @GetMapping("selectPostionById")
+  public Result selectPostionById(Integer id){
+    return recruitmentPositionService.selectPostionById(id);
+  }
+  @GetMapping("selectPostionByEnt")
+  public Result selectPostionByEnt(String eid){
+    return recruitmentPositionService.selectPostionByEnt(eid);
+  }
 
 }

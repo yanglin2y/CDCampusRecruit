@@ -1,5 +1,6 @@
 package com.ycode.cdcr.applicantcloud.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ycode.cdcr.applicantcloud.service.RecruitmentPositionService;
@@ -31,6 +32,15 @@ public class RecruitmentPositionServiceImpl extends ServiceImpl<RecruitmentPosit
 
   @Override
   public Result selectAllPositionByPage(Page<RecruitmentPosition> page) {
-    return Result.success(recruitmentPositionService.page(page));
+    return Result.success(recruitmentPositionService.page(page,new QueryWrapper<RecruitmentPosition>().eq("state",1)));
+  }
+
+  @Override
+  public Result selectPostionById(Integer id) {
+    return Result.success(recruitmentPositionService.getOne(new QueryWrapper<RecruitmentPosition>().eq("rpid",id)));
+  }
+  @Override
+  public Result selectPostionByEnt(String eid){
+    return Result.success(recruitmentPositionService.list(new QueryWrapper<RecruitmentPosition>().eq("eid",eid)));
   }
 }
