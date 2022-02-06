@@ -1,36 +1,24 @@
-package com.ycode.cdcr.base.entity;
+package com.ycode.cdcr.base.vo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @author YangLin
- * @createTime 2022/01/08
+ * @createTime 2022/01/25
  */
-@TableName("ent_info")
 @Data
-@Builder
-@EqualsAndHashCode(callSuper = false)
-@AllArgsConstructor
-@NoArgsConstructor
-public class EntInfo implements Serializable {
+public class EntVo implements Serializable {
 
-  private static final long serialVersionUID = -2629972031975670474L;
 
+  private static final long serialVersionUID = 980279536732829120L;
   @TableId(type = IdType.AUTO)
   private Integer id;
   private String eid;
-  private String account;
-  private String password;
   private String entName;
   private String companyIntroduction;
   private String productIntroduction;
@@ -40,4 +28,5 @@ public class EntInfo implements Serializable {
   private String entImg;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createTime;
+
 }

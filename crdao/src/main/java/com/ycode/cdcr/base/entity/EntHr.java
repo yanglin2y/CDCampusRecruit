@@ -34,6 +34,7 @@ public class EntHr implements Serializable {
   private String hrName;
   private String position;
   private String department;
+  private Integer state;
   private String hrImg;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime lastLogin;

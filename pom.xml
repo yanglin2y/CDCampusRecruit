@@ -12,6 +12,7 @@
     <module>applicantcloud</module>
     <module>crdao</module>
     <module>common</module>
+    <module>entcloud</module>
   </modules>
 
   <properties>
