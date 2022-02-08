@@ -30,7 +30,7 @@ public class HrResumeServiceImpl extends ServiceImpl< HrResumeMapper,HrResume>  
   @Override
   public Result selectHrResumeByHrid() {
     String hrid = UserUtil.getLoginUser().getHrid();
-    List<HrResume> list = hrResumeService.list(new QueryWrapper<HrResume>().eq("hrid", hrid));
+    List<HrResume> list = hrResumeService.list(new QueryWrapper<HrResume>().eq("hrid", hrid).eq("state",1));
     return Result.success(list);
   }
 }

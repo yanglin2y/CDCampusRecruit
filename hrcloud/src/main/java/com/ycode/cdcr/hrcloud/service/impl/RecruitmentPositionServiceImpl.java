@@ -36,7 +36,7 @@ public class RecruitmentPositionServiceImpl extends
     EntInfo obj = entInfoService.getOne(new QueryWrapper<EntInfo>().eq("eid", eid));
     RecruitmentPosition recruitmentPosition = RecruitmentPosition.builder().eid(eid)
         .entName(obj.getEntName()).state(1).createTime(LocalDateTime.now()).hrid(hrid)
-        .rpName(rpName).education(education).salary(salary).workAddress(workAddress)
+        .rpName(rpName).education(education).salary(salary).workAddress(workAddress).entImg(obj.getEntImg())
         .experience(experience).jobResponsibilities(jobResponsibilities)
         .employeesNum(obj.getEmployeesNum()).build();
     boolean save = recruitmentPositionService.save(recruitmentPosition);

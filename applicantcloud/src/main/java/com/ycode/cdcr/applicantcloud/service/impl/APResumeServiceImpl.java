@@ -64,7 +64,7 @@ public class APResumeServiceImpl extends ServiceImpl<APResumeMapper, APResume> i
         .experience(experience).entImg(entImg).state(0).createTime(LocalDateTime.now()).uid(uid).rpName(rpName).state(0)
         .build();
     HrResume hrResume = HrResume.builder().apName(UserUtil.getLoginUser().getApName()).uid(uid)
-        .createTime(LocalDateTime.now()).education(apEducation).rpid(Integer.parseInt(rpid)).build();
+        .createTime(LocalDateTime.now()).education(apEducation).rpName(rpName).rpid(Integer.parseInt(rpid)).build();
     hrResumeService.save(hrResume);
     boolean save = apResumeService.save(apResume);
     return save == true ? Result.success("投递成功", null) : Result.fail("投递失败");
