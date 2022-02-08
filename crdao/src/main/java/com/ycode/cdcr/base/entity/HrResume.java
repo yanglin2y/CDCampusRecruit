@@ -14,34 +14,26 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author YangLin
- * @createTime 2022/01/08
- * hr表
+ * @createTime 2022/02/07
  */
-@TableName("ent_hr")
+@TableName("hr_resume")
 @Data
 @Builder
-@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-public class EntHr implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class HrResume implements Serializable {
 
-  private static final long serialVersionUID = -143482793007401833L;
+  private static final long serialVersionUID = -2671284873573528952L;
   @TableId(type = IdType.AUTO)
   private Integer id;
-  private String hrid;
-  private String eid;
-  private String entName;
-  private String account;
-  private String password;
-  private Integer sex;
-  private String mail;
-  private String hrName;
-  private String position;
-  private String department;
+  private String uid;
+  private Integer rpid;
+  private String rpName;
+  private String apName;
+  private String education;
   private Integer state;
-  private String hrImg;
-  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
-  private LocalDateTime lastLogin;
+  private String hrid;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createTime;
 }

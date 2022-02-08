@@ -26,6 +26,7 @@ public class HrVo implements Serializable {
   private String position;
   private String department;
   private String hrImg;
+  private Integer state;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime lastLogin;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")

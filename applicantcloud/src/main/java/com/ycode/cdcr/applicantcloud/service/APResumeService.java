@@ -13,6 +13,6 @@ public interface APResumeService extends IService<APResume> {
   Result jugResume(Integer rpid);
 
   Result addResume(String eid, String hrid, String rpid, String rpName, String workAddress,
-      String education, String salary, String entName, String experience, String entImg,
+      String education, String salary, String entName, String experience, String entImg,String apEducation,
       Integer state);
 }

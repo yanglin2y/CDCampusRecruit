@@ -1,7 +1,7 @@
-package com.ycode.cdcr.applicantcloud.config;
+package com.ycode.cdcr.hrcloud.config;
 
-import com.ycode.cdcr.applicantcloud.filter.TokenFilter;
 import com.ycode.cdcr.common.util.AESSimpleUtil;
+import com.ycode.cdcr.hrcloud.filter.TokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -73,7 +73,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     http.csrf().disable();
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     http.authorizeRequests()
-        .antMatchers("/home","/user/registerAPUser","/user/login","/position/selectAllPositionByPage").permitAll()
+        .antMatchers("/home","/user/register","/user/login").permitAll()
         .anyRequest().authenticated();
     http.formLogin()
         .loginPage("/login.html")

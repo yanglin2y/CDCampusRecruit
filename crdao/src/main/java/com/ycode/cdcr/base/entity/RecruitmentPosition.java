@@ -33,9 +33,7 @@ public class RecruitmentPosition implements Serializable {
   private String salary;
   private String workAddress;
   private String experience;
-  private String positionLabel;
   private String jobResponsibilities;
-  private String additionalInformation;
   private Integer state;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createTime;

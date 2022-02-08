@@ -3,8 +3,10 @@ package com.ycode.cdcr.applicantcloud.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ycode.cdcr.applicantcloud.service.APResumeService;
+import com.ycode.cdcr.applicantcloud.service.HrResumeService;
 import com.ycode.cdcr.applicantcloud.util.UserUtil;
 import com.ycode.cdcr.base.entity.APResume;
+import com.ycode.cdcr.base.entity.HrResume;
 import com.ycode.cdcr.base.mapper.APResumeMapper;
 import com.ycode.cdcr.common.web.entity.vo.Result;
 import java.time.LocalDateTime;
@@ -23,6 +25,8 @@ public class APResumeServiceImpl extends ServiceImpl<APResumeMapper, APResume> i
 
   @Autowired
   APResumeService apResumeService;
+  @Autowired
+  HrResumeService hrResumeService;
 
   @Override
   public Result selectAPResumeByUid(Integer state) {
@@ -52,13 +56,17 @@ public class APResumeServiceImpl extends ServiceImpl<APResumeMapper, APResume> i
 
   @Override
   public Result addResume(String eid, String hrid, String rpid, String rpName, String workAddress,
-      String education, String salary, String entName, String experience, String entImg,
+      String education, String salary, String entName, String experience, String entImg,String apEducation,
       Integer state) {
     String uid = UserUtil.getLoginUser().getUid();
     APResume apResume = APResume.builder().eid(eid).hrid(hrid).rpid(rpid).rpName(rpName)
         .workAddress(workAddress).education(education).salary(salary).entName(entName)
-        .experience(experience).entImg(entImg).state(0).createTime(LocalDateTime.now()).uid(uid).build();
+        .experience(experience).entImg(entImg).state(0).createTime(LocalDateTime.now()).uid(uid).rpName(rpName).state(0)
+        .build();
+    HrResume hrResume = HrResume.builder().apName(UserUtil.getLoginUser().getApName()).uid(uid)
+        .createTime(LocalDateTime.now()).education(apEducation).rpid(Integer.parseInt(rpid)).build();
+    hrResumeService.save(hrResume);
     boolean save = apResumeService.save(apResume);
-    return save == true?Result.success("投递成功",null):Result.fail("投递失败");
+    return save == true ? Result.success("投递成功", null) : Result.fail("投递失败");
   }
 }

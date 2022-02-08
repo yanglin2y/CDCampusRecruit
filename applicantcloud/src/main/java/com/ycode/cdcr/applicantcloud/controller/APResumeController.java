@@ -34,9 +34,9 @@ public class APResumeController {
   }
   @PostMapping("addResume")
   Result addResume(String eid, String hrid, String rpid, String rpName, String workAddress,
-      String education, String salary, String entName, String experience, String entImg,
+      String education, String salary, String entName, String experience, String entImg,String apEducation,
       Integer state){
-    return apResumeService.addResume(eid, hrid, rpid, rpName, workAddress, education, salary, entName, experience, entImg, state);
+    return apResumeService.addResume(eid, hrid, rpid, rpName, workAddress, education, salary, entName, experience, entImg, apEducation, state);
   }
 }
 
