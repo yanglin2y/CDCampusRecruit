@@ -14,6 +14,7 @@
     <module>common</module>
     <module>entcloud</module>
     <module>hrcloud</module>
+    <module>nettycloud</module>
   </modules>
 
   <properties>

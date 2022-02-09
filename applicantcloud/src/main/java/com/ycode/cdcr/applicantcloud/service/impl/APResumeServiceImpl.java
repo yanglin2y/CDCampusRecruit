@@ -63,7 +63,8 @@ public class APResumeServiceImpl extends ServiceImpl<APResumeMapper, APResume> i
         .workAddress(workAddress).education(education).salary(salary).entName(entName)
         .experience(experience).entImg(entImg).state(0).createTime(LocalDateTime.now()).uid(uid).rpName(rpName).state(0)
         .build();
-    HrResume hrResume = HrResume.builder().apName(UserUtil.getLoginUser().getApName()).uid(uid)
+    HrResume hrResume = HrResume.builder().apName(UserUtil.getLoginUser().getApName()).uid(uid).apImg(UserUtil.getLoginUser()
+            .getApImg())
         .createTime(LocalDateTime.now()).education(apEducation).rpName(rpName).rpid(Integer.parseInt(rpid)).build();
     hrResumeService.save(hrResume);
     boolean save = apResumeService.save(apResume);

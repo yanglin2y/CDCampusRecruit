@@ -87,6 +87,7 @@ public class SecurityHandlerConfig {
       APUser apUser = apUserService.getOne(
           new QueryWrapper<APUser>().eq("uid", loginApUserVo.getUid()));
       loginApUserVo.setUid(apUser.getUid());
+      loginApUserVo.setApImg(apUser.getApImg());
       Token token = tokenService.save(loginApUserVo);
 
       ResponseUtil.responseJson(response, HttpStatus.OK.value(), Result.success(token));

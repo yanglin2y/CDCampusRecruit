@@ -15,22 +15,22 @@ import org.springframework.stereotype.Service;
 public class MyRedisOperate {
 
   @Autowired
-  private StringRedisTemplate redisTemplate;
+  private StringRedisTemplate stringRedisTemplate;
 
   public MyRedisOperate(){
 
   }
 
   public boolean keyExists(final String key) {
-    return redisTemplate.hasKey(key);
+    return stringRedisTemplate.hasKey(key);
   }
 
   public void delKey(final String key) {
-    redisTemplate.delete(key);
+    stringRedisTemplate.delete(key);
   }
 
   public String get(final String key) {
-    Object obj = redisTemplate.opsForValue().get(key);
+    Object obj = stringRedisTemplate.opsForValue().get(key);
     if (obj == null || "nil".equals(obj)) {
       return null;
     }
@@ -39,50 +39,50 @@ public class MyRedisOperate {
 
 
   public void set(final String key, final String value) {
-    redisTemplate.opsForValue().set(key, value);
+    stringRedisTemplate.opsForValue().set(key, value);
   }
 
   public void set(final String key, final String value, final long timeout) {
-    redisTemplate.opsForValue().set(key, value);
-    redisTemplate.expire(key, timeout, TimeUnit.SECONDS);
+    stringRedisTemplate.opsForValue().set(key, value);
+    stringRedisTemplate.expire(key, timeout, TimeUnit.SECONDS);
   }
 
   public void leftPush(final String key, final String value) {
-    redisTemplate.opsForList().leftPush(key, value);
+    stringRedisTemplate.opsForList().leftPush(key, value);
   }
 
   public String rightPop(final String key) {
-    return redisTemplate.opsForList().rightPop(key);
+    return stringRedisTemplate.opsForList().rightPop(key);
   }
 
   public void hIncrement(final String key, final String field, final long count) {
-    redisTemplate.opsForHash().increment(key, field, count);
+    stringRedisTemplate.opsForHash().increment(key, field, count);
   }
 
   public Long increment(String key) {
-    return redisTemplate.opsForValue().increment(key);
+    return stringRedisTemplate.opsForValue().increment(key);
   }
 
   public void hashPut(String key,Object field,Object object){
-    redisTemplate.opsForHash().put(key,field,object);
+    stringRedisTemplate.opsForHash().put(key,field,object);
   }
 
   public Map<Object, Object> hashGet(String key){
-    Map<Object, Object> map = redisTemplate.opsForHash().entries(key);
+    Map<Object, Object> map = stringRedisTemplate.opsForHash().entries(key);
     return map;
   }
 
   public List<Object> hashGetValues(String key){
-    List<Object> objects = redisTemplate.opsForHash().values(key);
+    List<Object> objects = stringRedisTemplate.opsForHash().values(key);
     return objects;
   }
 
   public Boolean hasHashKey(String key,Object field){
-    return redisTemplate.opsForHash().hasKey(key,field);
+    return stringRedisTemplate.opsForHash().hasKey(key,field);
   }
 
   public void deleteHashKey(String key,Object... field){
-    redisTemplate.opsForHash().delete(key,field);
+    stringRedisTemplate.opsForHash().delete(key,field);
   }
 
 }
