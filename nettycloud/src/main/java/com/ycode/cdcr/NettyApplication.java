@@ -3,6 +3,7 @@ package com.ycode.cdcr;
 import com.ycode.cdcr.netty.NettyServer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@MapperScan("com.ycode.cdcr.base.mapper")
 public class NettyApplication implements CommandLineRunner {
 
   public static void main(String[] args) {

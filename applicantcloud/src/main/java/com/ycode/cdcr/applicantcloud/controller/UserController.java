@@ -33,4 +33,8 @@ public class UserController {
       String city, String iphone, String mail, String apImg){
     return apUserService.updataAPUser(id, apName, sex, birthday, city, iphone, mail, apImg);
   }
+  @PostMapping("updataPass")
+  Result updataPass(String password){
+    return apUserService.updataPass(password);
+  }
 }

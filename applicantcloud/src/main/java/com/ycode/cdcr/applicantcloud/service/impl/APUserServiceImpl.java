@@ -70,4 +70,12 @@ public class APUserServiceImpl extends ServiceImpl<APUserMapper, APUser> impleme
 
   }
 
+  @Override
+  public Result updataPass(String password) {
+    String uid  = UserUtil.getLoginUser().getUid();
+    APUser apUser = APUser.builder().password(AESSimpleUtil.encrypt(password)).build();
+    boolean save = apUserService.update(apUser, new QueryWrapper<APUser>().eq("uid", uid));
+    return save == true ? Result.success("修改成功",null ) : Result.fail("修改失败，请重试");
+  }
+
 }

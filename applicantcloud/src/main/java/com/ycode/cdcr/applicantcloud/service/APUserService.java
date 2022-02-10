@@ -14,4 +14,5 @@ public interface APUserService extends IService<APUser> {
 
   Result updataAPUser(Integer id,String apName, Integer sex, String birthday,
       String city, String iphone, String mail, String apImg);
+  Result updataPass(String password);
 }
